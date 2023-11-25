@@ -1,3 +1,9 @@
+RESET = \033[0m
+TEAL = \033[46m
+GREEN = \033[42m
+PURPLE = \033[45m
+RED = \033[41m
+
 NAME = push_swap
 
 MY_SOURCES = ft_hex.c \
@@ -23,15 +29,20 @@ CFLAGS += -Wall -Werror -Wextra
 
 $(NAME): $(MY_OBJECTS)
 	$(CC) $(FLAGS) -o $(NAME) $(MY_OBJECTS)
+	@echo "$(TEAL)Work, work...$(RESET)"
 
 all: $(NAME)
+	@echo "$(GREEN)Everything's done, mate.$(RESET)"
 
 clean:
 	rm -f $(MY_OBJECTS)
+	@echo "$(PURPLE)Objects are deleted.$(RESET)"
 
 fclean: clean
 	rm -rf $(NAME)
+	@echo "$(RED)Everything's gone.$(RESET)"
 
 re: fclean all
+	@echo "$(GREEN)Everything's resurrected.$(RESET)"
 
 .PHONY: all clean fclean re
