@@ -25,21 +25,21 @@ CC = gcc
 CFLAGS += -Wall -Werror -Wextra
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 $(NAME): $(MY_OBJECTS)
-	$(CC) $(FLAGS) -o $(NAME) $(MY_OBJECTS)
+	@$(CC) $(FLAGS) -o $(NAME) $(MY_OBJECTS)
 	@echo "$(TEAL)Work, work...$(RESET)"
 
 all: $(NAME)
 	@echo "$(GREEN)Everything's done, mate.$(RESET)"
 
 clean:
-	rm -f $(MY_OBJECTS)
+	@rm -f $(MY_OBJECTS)
 	@echo "$(PURPLE)Objects are deleted.$(RESET)"
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 	@echo "$(RED)Everything's gone.$(RESET)"
 
 re: fclean all
