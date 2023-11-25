@@ -28,11 +28,15 @@ CFLAGS += -Wall -Werror -Wextra
 	@$(CC) $(CFLAGS) -c $^ -o $@
 
 $(NAME): $(MY_OBJECTS)
-	@$(CC) $(FLAGS) -o $(NAME) $(MY_OBJECTS)
-	@echo "$(TEAL)Work, work...$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(MY_OBJECTS)
+	@echo -n "$(TEAL)Work, work$(RESET)"
+	@for i in $$(seq 3); do \
+		echo -n "$(TEAL).$(RESET)"; \
+		sleep 1; \
+		done
+	@echo "\n$(GREEN)Everything's done, mate.$(RESET)"
 
 all: $(NAME)
-	@echo "$(GREEN)Everything's done, mate.$(RESET)"
 
 clean:
 	@rm -f $(MY_OBJECTS)
@@ -43,6 +47,5 @@ fclean: clean
 	@echo "$(RED)Everything's gone.$(RESET)"
 
 re: fclean all
-	@echo "$(GREEN)Everything's resurrected.$(RESET)"
 
 .PHONY: all clean fclean re
