@@ -1,9 +1,3 @@
-RESET = \033[0m
-TEAL = \033[46m
-GREEN = \033[42m
-PURPLE = \033[45m
-RED = \033[41m
-
 NAME = push_swap
 
 MY_SOURCES = ft_hex.c \
@@ -25,26 +19,18 @@ CC = gcc
 CFLAGS += -Wall -Werror -Wextra
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(NAME): $(MY_OBJECTS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(MY_OBJECTS)
-	@echo -n "$(TEAL)Work, work$(RESET)"
-	@for i in $$(seq 3); do \
-		echo -n "$(TEAL).$(RESET)"; \
-		sleep 1; \
-		done
-	@echo "\n$(GREEN)Everything's done, mate.$(RESET)"
+	$(CC) $(FLAGS) -o $(NAME) $(MY_OBJECTS)
 
 all: $(NAME)
 
 clean:
-	@rm -f $(MY_OBJECTS)
-	@echo "$(PURPLE)Objects are deleted.$(RESET)"
+	rm -f $(MY_OBJECTS)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "$(RED)Everything's gone.$(RESET)"
+	rm -rf $(NAME)
 
 re: fclean all
 
