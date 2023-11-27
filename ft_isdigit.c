@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/27 19:04:36 by rradules         ###   ########.fr       */
+/*   Created: 2023/11/27 18:45:27 by rradules          #+#    #+#             */
+/*   Updated: 2023/11/27 18:46:07 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_isdigit(int a)
 {
-	int	i;
-	int	j;
-
-	if (argc > 1)
+	if (a >= 48 && a <= 57)
 	{
-		i = ft_checknumber(argv);
-		j = ft_atol(argv[1]);
-		if (i == 0)
-			printf("%i\n", (ft_newlist(j))->content);
-		else
-			printf("Error\n");
+		return (1);
 	}
 	return (0);
 }

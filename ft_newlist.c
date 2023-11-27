@@ -6,13 +6,13 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:08:06 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/24 18:14:46 by rradules         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:03:01 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_cont	*ft_newlist(int	*content)
+t_cont	*ft_newlist(int content)
 {
 	t_cont	*head;
 

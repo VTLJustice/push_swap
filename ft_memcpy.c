@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/27 19:04:36 by rradules         ###   ########.fr       */
+/*   Created: 2023/11/27 17:37:23 by rradules          #+#    #+#             */
+/*   Updated: 2023/11/27 17:37:42 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	char	*temp_dst;
+	char	*temp_src;
 
-	if (argc > 1)
+	i = 0;
+	temp_dst = (char *) dst;
+	temp_src = (char *) src;
+	if (dst == 0 && src == 0)
+		return (0);
+	while (i < n)
 	{
-		i = ft_checknumber(argv);
-		j = ft_atol(argv[1]);
-		if (i == 0)
-			printf("%i\n", (ft_newlist(j))->content);
-		else
-			printf("Error\n");
+		temp_dst[i] = temp_src[i];
+		i++;
 	}
-	return (0);
+	return (dst);
 }

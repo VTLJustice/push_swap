@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_checknumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/27 19:04:36 by rradules         ###   ########.fr       */
+/*   Created: 2023/11/27 18:26:42 by rradules          #+#    #+#             */
+/*   Updated: 2023/11/27 19:41:09 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_checknumber(char **argv)
 {
 	int	i;
 	int	j;
+	int	count;
 
-	if (argc > 1)
+	i = 1;
+	j = 0;
+	count = 0;
+	while (argv[i])
 	{
-		i = ft_checknumber(argv);
-		j = ft_atol(argv[1]);
-		if (i == 0)
-			printf("%i\n", (ft_newlist(j))->content);
-		else
-			printf("Error\n");
+		while (argv[i][j] != '\0')
+		{
+			if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]) && count == 0)
+			{
+				count = 1;
+				j++;
+			}
+			else if (ft_isdigit(argv[i][j]))
+				j++;
+			else if (argv[i][j] == ' ' && ft_isdigit(argv[i][j + 1]))
+				j++;
+			else
+				return (-1);
+		}
+		count = 0;
+		i++;
 	}
 	return (0);
 }

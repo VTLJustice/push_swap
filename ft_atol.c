@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/27 19:04:36 by rradules         ###   ########.fr       */
+/*   Created: 2023/11/27 16:31:58 by rradules          #+#    #+#             */
+/*   Updated: 2023/11/27 19:02:09 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_atol(char *str)
 {
-	int	i;
-	int	j;
+	long int	result;
+	long int	sign;
 
-	if (argc > 1)
+	result = 0;
+	sign = 1;
+	if (*str == '-')
 	{
-		i = ft_checknumber(argv);
-		j = ft_atol(argv[1]);
-		if (i == 0)
-			printf("%i\n", (ft_newlist(j))->content);
-		else
-			printf("Error\n");
+		sign = sign * -1;
+		str++;
 	}
-	return (0);
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str - '0';
+		str++;
+	}
+	result *= sign;
+	if (result < INT_MIN || result > INT_MAX)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	return (((int)result));
 }
