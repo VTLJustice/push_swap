@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checknumber.c                                   :+:      :+:    :+:   */
+/*   ft_splitcheck.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:26:42 by rradules          #+#    #+#             */
-/*   Updated: 2023/12/12 19:13:01 by rradules         ###   ########.fr       */
+/*   Created: 2023/12/12 17:44:17 by rradules          #+#    #+#             */
+/*   Updated: 2023/12/12 20:04:37 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_checknumber(char *argv)
+char	**ft_splitcheck(char *argv)
 {
-	int	i;
-	int	count;
+	int		i;
+	char	**new;
 
 	i = 0;
-	count = 0;
 	while (argv[i] != '\0')
 	{
-		if (argv[i] == '-' && ft_isdigit(argv[i + 1]) && count == 0)
+		if ((ft_isdigit(argv[i])) == 1)
+			i++;
+		else if (argv[i] == ' ' && i > 0)
+			i++;
+		else if (argv[i] == '-')
 		{
-			count = 1;
-			i++;
+			if (i == 0)
+				i++;
+			else if (argv[i - 1] == ' ' && (ft_isdigit(argv[i + 1])))
+				i++;
+			else
+				return (NULL);
 		}
-		else if (ft_isdigit(argv[i]))
-			i++;
 		else
-			return (-1);
+			return (NULL);
 	}
-	return (0);
+	new = ft_split(argv, ' ');
+	return (new);
 }

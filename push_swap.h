@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2023/11/27 18:46:35 by rradules         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:29:42 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ t_cont	*ft_newlist(int content);
 int		ft_atol(char *str);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
-int		ft_checknumber(char	**argv);
+int		ft_checknumber(char	*argv);
 int		ft_isdigit(int a);
+void	ft_getlist(char **argv);
+void	ft_error(int i, t_cont *stack);
+char	**ft_splitcheck(char *argv);
+int		ft_checkspaces(char *argv);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

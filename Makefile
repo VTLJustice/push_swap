@@ -23,6 +23,10 @@ MY_SOURCES = ft_hex.c \
 			 ft_split.c \
 			 ft_checknumber.c \
 			 ft_isdigit.c \
+			 ft_getlist.c \
+			 ft_error.c \
+			 ft_splitcheck.c \
+			 ft_checkspaces.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

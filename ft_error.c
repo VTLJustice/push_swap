@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checknumber.c                                   :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:26:42 by rradules          #+#    #+#             */
-/*   Updated: 2023/12/12 19:13:01 by rradules         ###   ########.fr       */
+/*   Created: 2023/12/12 18:22:18 by rradules          #+#    #+#             */
+/*   Updated: 2024/01/10 17:31:35 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_checknumber(char *argv)
+void	ft_error(int i, t_cont *stack)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (argv[i] != '\0')
+	if (i == 0)
+		ft_printf("Error\n");
+	else
 	{
-		if (argv[i] == '-' && ft_isdigit(argv[i + 1]) && count == 0)
-		{
-			count = 1;
-			i++;
-		}
-		else if (ft_isdigit(argv[i]))
-			i++;
-		else
-			return (-1);
+		ft_printf("Error\n");
+		free(stack);
 	}
-	return (0);
+	exit (-1);
 }
