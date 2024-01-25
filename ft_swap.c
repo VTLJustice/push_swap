@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_swap.c   	                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:31:58 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:59 by rradules         ###   ########.fr       */
+/*   Created: 2024/01/25 17:46:04 by rradules          #+#    #+#             */
+/*   Updated: 2024/01/25 18:35:57 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(char *str)
+void	ft_swap_a(t_cont *stack)
 {
-	long int	result;
-	long int	sign;
+	int	temp;
 
-	result = 0;
-	sign = 1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = sign * -1;
-			str++;
-		}
-		else
-			str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	result *= sign;
-	if (result < INT_MIN || result > INT_MAX)
-		ft_error(-1);
-	return (((int)result));
+	temp = stack->content;
+	stack->content = stack->next->content;
+	stack->next->content = temp;
+	ft_printf("sa\n");
+}
+
+void	ft_swap_b(t_cont *stack)
+{
+	int	temp;
+
+	temp = stack->content;
+	stack->content = stack->next->content;
+	stack->next->content = temp;
+	ft_printf("sb\n");
+}
+
+void	ft_sswap(t_cont	*stack_a, t_cont *stack_b)
+{
+	ft_swap_a(stack_a);
+	ft_swap_b(stack_b);
+	ft_printf("ss\n");
 }

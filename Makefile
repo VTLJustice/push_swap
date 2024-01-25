@@ -15,7 +15,7 @@ MY_SOURCES = ft_hex.c \
 			 ft_putchar.c \
 			 ft_strchr.c \
 			 push_swap.c \
-			 ft_newlist.c \
+			 ft_newnode.c \
 			 ft_putnbr.c \
 			 ft_writenum.c \
 			 ft_atol.c \
@@ -25,13 +25,14 @@ MY_SOURCES = ft_hex.c \
 			 ft_isdigit.c \
 			 ft_getlist.c \
 			 ft_error.c \
-			 ft_splitcheck.c \
 			 ft_checkspaces.c \
+			 ft_lst_addback.c \
+			 ft_swap.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra
+CFLAGS += -Wall -Werror -Wextra #-fsanitize=address#
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $^ -o $@

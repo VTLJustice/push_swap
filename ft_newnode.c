@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_newnode.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:31:58 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:59 by rradules         ###   ########.fr       */
+/*   Created: 2023/11/24 17:08:06 by rradules          #+#    #+#             */
+/*   Updated: 2024/01/25 17:21:25 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(char *str)
+t_cont	*ft_newnode(int content)
 {
-	long int	result;
-	long int	sign;
+	t_cont	*head;
 
-	result = 0;
-	sign = 1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = sign * -1;
-			str++;
-		}
-		else
-			str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	result *= sign;
-	if (result < INT_MIN || result > INT_MAX)
-		ft_error(-1);
-	return (((int)result));
+	head = malloc(sizeof(t_cont));
+	if (!head)
+		return (NULL);
+	head->content = content;
+	head->next = NULL;
+	return (head);
 }

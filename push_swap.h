@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/11 18:29:42 by rradules         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:34:44 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,19 @@ typedef struct s_container
 }						t_cont;
 
 /* push_swap functions */
-t_cont	*ft_newlist(int content);
+t_cont	*ft_newnode(int content);
 int		ft_atol(char *str);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
 int		ft_checknumber(char	*argv);
 int		ft_isdigit(int a);
 void	ft_getlist(char **argv);
-void	ft_error(int i, t_cont *stack);
-char	**ft_splitcheck(char *argv);
+void	ft_error(int i);
 int		ft_checkspaces(char *argv);
+void	ft_lst_addback(t_cont **lst, int content);
+void	ft_swap_a(t_cont *stack);
+void	ft_swap_b(t_cont *stack);
+void	ft_sswap(t_cont *stack_a, t_cont *stack_b);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

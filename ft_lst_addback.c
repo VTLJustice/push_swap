@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_lst_addback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 16:31:58 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:59 by rradules         ###   ########.fr       */
+/*   Created: 2024/01/24 18:05:58 by rradules          #+#    #+#             */
+/*   Updated: 2024/01/25 16:39:53 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(char *str)
+t_cont	*ft_lstlast(t_cont *lst)
 {
-	long int	result;
-	long int	sign;
+	if (lst != NULL)
+		while (lst->next)
+			lst = lst->next;
+	return (lst);
+}
 
-	result = 0;
-	sign = 1;
-	if (*str == '-' || *str == '+')
+void	ft_lst_addback(t_cont **lst, int content)
+{
+	t_cont	*last;
+
+	if (*lst == NULL)
+		*lst = ft_newnode(content);
+	else
 	{
-		if (*str == '-')
-		{
-			sign = sign * -1;
-			str++;
-		}
-		else
-			str++;
+		last = ft_lstlast(*lst);
+		last->next = ft_newnode(content);
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	result *= sign;
-	if (result < INT_MIN || result > INT_MAX)
-		ft_error(-1);
-	return (((int)result));
 }

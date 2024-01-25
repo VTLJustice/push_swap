@@ -6,52 +6,106 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/11 18:29:40 by rradules         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:37:19 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	ft_numbers(char **argv, t_cont *list)
+void	ft_end(t_cont *stack)
 {
+	t_cont	*temp;
 
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
+	exit(0);
 }
-*/
+
+void	ft_check_duplicity(t_cont **stack)
+{
+	t_cont	*current;
+	t_cont	*temp;
+
+	temp = *stack;
+	while (temp)
+	{
+		current = temp->next;
+		while (current)
+		{
+			if (temp->content == current->content)
+				ft_error(-1);
+			current = current->next;
+		}
+		temp = temp->next;
+	}
+}
+
+void	ft_numbers(char **splitted, t_cont **stack)
+{
+	int	i;
+
+	i = 0;
+	while (splitted[i] != '\0')
+	{
+		ft_lst_addback(stack, ft_atol(splitted[i]));
+		i++;
+	}
+}
+
+void	ft_handlespaces(char *argv, t_cont **stack)
+{
+	char	**splitted;
+	int		found;
+
+	found = ft_checkspaces(argv);
+	if (found == 1)
+	{
+		splitted = ft_split(argv, ' ');
+		ft_numbers(splitted, stack);
+	}
+	else
+		ft_error(-1);
+}
+
 void	ft_getlist(char **argv)
 {
 	int		i;
-	int		a;
-	int		check;
-	char	**splitted;
 	t_cont	*stack_a;
+	t_cont	*current;
 
 	i = 1;
-	a = 0;
-	stack_a = ft_newlist(100);
-	while (argv[i] != '\0')
+	stack_a = NULL;
+	while (argv[i])
 	{
-		if ((ft_checkspaces(argv[i])) == 1)
+		if ((ft_checknumber(argv[i])) == 0)
 		{
-			splitted = ft_splitcheck(argv[i]);
-			ft_printf("%d\n", 1);
-		//	ft_numbers(splitted, stack_a);
+			ft_handlespaces(argv[i], &stack_a);
+			i++;
+		}
+		else if ((ft_checknumber(argv[i])) == 1)
+		{
+			ft_lst_addback(&stack_a, ft_atol(argv[i]));
 			i++;
 		}
 		else
-		{
-			check = ft_checknumber(argv[i]);
-			if (check == 0)
-			{
-				stack_a->content = ft_atol(argv[i]);
-				printf("%d\n", stack_a->content);
-			}
-			else
-				ft_error(0, stack_a);
-		}
-		i++;
+			ft_error(-1);
 	}
-	while (stack_a)
+	ft_check_duplicity(&stack_a);
+	current = stack_a;
+	while (current)
 	{
-		printf("%d,", stack_a->content);
+		printf("%d\n", current->content);
+		current = current->next;
+	}
+	ft_swap_b(stack_a);
+	current = stack_a;
+	while (current)
+	{
+		printf("%d\n", current->content);
+		current = current->next;
 	}
 }
