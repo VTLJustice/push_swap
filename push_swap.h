@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 18:34:44 by rradules         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:11:26 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ void	ft_getlist(char **argv);
 void	ft_error(int i);
 int		ft_checkspaces(char *argv);
 void	ft_lst_addback(t_cont **lst, int content);
-void	ft_swap_a(t_cont *stack);
-void	ft_swap_b(t_cont *stack);
+void	ft_swap_a(t_cont *stack, int ss);
+void	ft_swap_b(t_cont *stack, int ss);
 void	ft_sswap(t_cont *stack_a, t_cont *stack_b);
+void	ft_push_a(t_cont **stack_a, t_cont **stack_b);
+void	ft_push_b(t_cont **stack_a, t_cont **stack_b);
+void	ft_rotate_a(t_cont **stack_a);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

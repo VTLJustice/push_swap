@@ -28,6 +28,8 @@ MY_SOURCES = ft_hex.c \
 			 ft_checkspaces.c \
 			 ft_lst_addback.c \
 			 ft_swap.c \
+			 ft_push.c \
+			 ft_rotate.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

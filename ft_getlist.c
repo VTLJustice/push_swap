@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 18:37:19 by rradules         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:16:25 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ void	ft_getlist(char **argv)
 	int		i;
 	t_cont	*stack_a;
 	t_cont	*current;
+	t_cont	*stack_b;
+	t_cont	*current_b;
 
 	i = 1;
 	stack_a = NULL;
+	stack_b = ft_newnode(3);
 	while (argv[i])
 	{
 		if ((ft_checknumber(argv[i])) == 0)
@@ -96,16 +99,52 @@ void	ft_getlist(char **argv)
 	}
 	ft_check_duplicity(&stack_a);
 	current = stack_a;
-	while (current)
+	ft_lst_addback(&stack_b, 5);
+	ft_lst_addback(&stack_b, 6);
+	ft_lst_addback(&stack_b, 10);
+	current_b = stack_b;
+	printf("Stack_a         Stack_b\n");
+	while (current || current_b)
 	{
-		printf("%d\n", current->content);
-		current = current->next;
+		if (current)
+			printf("   %d", current->content);
+		else
+			printf("    ");
+		printf("\t\t");
+
+		if (current_b)
+			printf("   %d", current_b->content);
+		else
+			printf(" ");
+		printf("\n");
+		if (current)
+			current = current->next;
+		if (current_b)
+			current_b = current_b->next;
 	}
-	ft_swap_b(stack_a);
+	ft_rotate_a(&stack_a);
+	//ft_push_b(&stack_a, &stack_b);
+	//ft_sswap(stack_a, stack_b);
+	//ft_swap_b(stack_b, 0);
 	current = stack_a;
-	while (current)
+	current_b = stack_b;
+	printf("Stack_a         Stack_b\n");
+	while (current || current_b)
 	{
-		printf("%d\n", current->content);
-		current = current->next;
+		if (current)
+			printf("   %d", current->content);
+		else
+			printf("    ");
+		printf("\t\t");
+
+		if (current_b)
+			printf("   %d", current_b->content);
+		else
+			printf(" ");
+		printf("\n");
+		if (current)
+			current = current->next;
+		if (current_b)
+			current_b = current_b->next;
 	}
 }
