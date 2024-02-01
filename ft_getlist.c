@@ -75,11 +75,9 @@ void	ft_getlist(char **argv)
 {
 	int		i;
 	t_cont	*stack_a;
-	t_cont	*stack_b;
 
 	i = 1;
 	stack_a = NULL;
-	stack_b = ft_newnode(3);
 	while (argv[i])
 	{
 		if ((ft_checknumber(argv[i])) == 0)
@@ -96,20 +94,5 @@ void	ft_getlist(char **argv)
 			ft_error(-1);
 	}
 	ft_check_duplicity(&stack_a);
-	ft_lst_addback(&stack_b, 5);
-	ft_lst_addback(&stack_b, 6);
-	ft_lst_addback(&stack_b, 10);
-	ft_printstacks(stack_a, stack_b);
-	ft_rrotate(&stack_a, &stack_b);
-	//ft_rotate(&stack_b, RB);
-	//ft_rotate(&stack_a, RA);
-	//ft_push(&stack_a, &stack_b, PA);
-	//ft_push(&stack_b, &stack_a, PB);
-	//ft_sswap(stack_a, stack_b);
-	//ft_swap(stack_b, SB);
-	//ft_swap(stack_a, SA);
-	//ft_reverse_rotate(&stack_a, RRA);
-	//ft_reverse_rotate(&stack_b, RRB);
-	//ft_rr_rotate(&stack_a, &stack_b);
-	ft_printstacks(stack_a, stack_b);
+	ft_end(stack_a);
 }

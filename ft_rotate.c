@@ -14,18 +14,25 @@
 
 void	ft_rotate(t_cont **stack, int rotate)
 {
+	t_cont	*temp;
+	t_cont	*head;
 	t_cont	*last;
-	t_cont	*newhead;
 
+	temp = (*stack);
 	last = (*stack);
-	last->next = NULL;
-	(*stack) = (*stack)->next;
-	newhead = (*stack);
-	while ((*stack))
-		(*stack) = (*stack)->next;
-	(*stack)->next = last;
-	(*stack) = newhead;
-	//last->next = NULL;
+	head = (*stack)->next;
+	while (temp)
+	{
+		if (temp->next == NULL)
+		{
+			temp->next = last;
+			last->next = NULL;
+			break ;
+		}
+		else
+			temp = temp->next;
+	}
+	(*stack) = head;
 	if (rotate == 0)
 		ft_printf("ra\n");
 	else if (rotate == 1)
