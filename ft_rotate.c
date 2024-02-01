@@ -12,19 +12,55 @@
 
 #include "push_swap.h"
 
-void	ft_rotate_a(t_cont **stack_a)
+void	ft_rotate_a(t_cont **stack_a, int rr)
 {
-	t_cont	*head_a;
 	t_cont	*tempnode;
+	t_cont	*head;
 
-	head_a = *stack_a;
-	free(*stack_a);
-	stack_a = stack_a->next;
-	while ((*stack_a)->next != NULL)
-		(*stack_a) = (*stack_a)->next;
-	tempnode = *stack_a;
-	printf("Valor del tempnode: %d\n", tempnode->content);
-	printf("Valor del head_a: %d\n", head_a->content);
-	(*stack_a)->next = head_a;
+	tempnode = (*stack_a);
+	while (tempnode)
+	{
+		if (tempnode->next->next == NULL)
+		{
+			head = tempnode->next;
+			tempnode->next = NULL;
+			break ;
+		}
+		else
+			tempnode = tempnode->next;
+	}
+	head->next = (*stack_a);
+	(*stack_a) = head;
+	if (rr == 0)
+		printf("ra\n");
+}
 
+void	ft_rotate_b(t_cont **stack_b, int rr)
+{
+	t_cont	*tempnode;
+	t_cont	*head;
+
+	tempnode = (*stack_b);
+	while (tempnode)
+	{
+		if (tempnode->next->next == NULL)
+		{
+			head = tempnode->next;
+			tempnode->next = NULL;
+			break ;
+		}
+		else
+			tempnode = tempnode->next;
+	}
+	head->next = (*stack_b);
+	(*stack_b) = head;
+	if (rr == 0)
+		printf("rb\n");
+}
+
+void	ft_rrotate(t_cont **stack_a, t_cont **stack_b)
+{
+	ft_rotate_a(stack_a, 1);
+	ft_rotate_b(stack_b, 1);
+	printf("rr\n");
 }

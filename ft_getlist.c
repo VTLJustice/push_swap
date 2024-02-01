@@ -49,7 +49,7 @@ void	ft_numbers(char **splitted, t_cont **stack)
 	int	i;
 
 	i = 0;
-	while (splitted[i] != '\0')
+	while (splitted[i] != NULL)
 	{
 		ft_lst_addback(stack, ft_atol(splitted[i]));
 		i++;
@@ -122,7 +122,9 @@ void	ft_getlist(char **argv)
 		if (current_b)
 			current_b = current_b->next;
 	}
-	ft_rotate_a(&stack_a);
+	ft_rrotate(&stack_a, &stack_b);
+	//ft_rotate_b(&stack_b, 0);
+	//ft_rotate_a(&stack_a);
 	//ft_push_b(&stack_a, &stack_b);
 	//ft_sswap(stack_a, stack_b);
 	//ft_swap_b(stack_b, 0);

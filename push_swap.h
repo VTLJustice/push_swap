@@ -42,7 +42,9 @@ void	ft_swap_b(t_cont *stack, int ss);
 void	ft_sswap(t_cont *stack_a, t_cont *stack_b);
 void	ft_push_a(t_cont **stack_a, t_cont **stack_b);
 void	ft_push_b(t_cont **stack_a, t_cont **stack_b);
-void	ft_rotate_a(t_cont **stack_a);
+void	ft_rotate_a(t_cont **stack_a, int rr);
+void	ft_rotate_b(t_cont **stack_b, int rr);
+void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);
