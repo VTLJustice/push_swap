@@ -5,62 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 19:07:27 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/31 19:36:46 by rradules         ###   ########.fr       */
+/*   Created: 2024/02/01 16:09:50 by rradules          #+#    #+#             */
+/*   Updated: 2024/02/01 19:36:37 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rotate_a(t_cont **stack_a, int rr)
+void	ft_rotate(t_cont **stack, int rotate)
 {
-	t_cont	*tempnode;
-	t_cont	*head;
+	t_cont	*last;
+	t_cont	*newhead;
 
-	tempnode = (*stack_a);
-	while (tempnode)
-	{
-		if (tempnode->next->next == NULL)
-		{
-			head = tempnode->next;
-			tempnode->next = NULL;
-			break ;
-		}
-		else
-			tempnode = tempnode->next;
-	}
-	head->next = (*stack_a);
-	(*stack_a) = head;
-	if (rr == 0)
-		printf("ra\n");
-}
-
-void	ft_rotate_b(t_cont **stack_b, int rr)
-{
-	t_cont	*tempnode;
-	t_cont	*head;
-
-	tempnode = (*stack_b);
-	while (tempnode)
-	{
-		if (tempnode->next->next == NULL)
-		{
-			head = tempnode->next;
-			tempnode->next = NULL;
-			break ;
-		}
-		else
-			tempnode = tempnode->next;
-	}
-	head->next = (*stack_b);
-	(*stack_b) = head;
-	if (rr == 0)
-		printf("rb\n");
+	last = (*stack);
+	last->next = NULL;
+	(*stack) = (*stack)->next;
+	newhead = (*stack);
+	while ((*stack))
+		(*stack) = (*stack)->next;
+	(*stack)->next = last;
+	(*stack) = newhead;
+	//last->next = NULL;
+	if (rotate == 0)
+		ft_printf("ra\n");
+	else if (rotate == 1)
+		ft_printf("rb\n");
 }
 
 void	ft_rrotate(t_cont **stack_a, t_cont **stack_b)
 {
-	ft_rotate_a(stack_a, 1);
-	ft_rotate_b(stack_b, 1);
-	printf("rr\n");
+	ft_rotate(stack_a, 2);
+	ft_rotate(stack_b, 2);
+	ft_printf("rr\n");
 }

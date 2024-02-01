@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/31 19:11:26 by rradules         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:33:16 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,38 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef SA
+#  define SA 0
+# endif
+
+# ifndef SB
+#  define SB 1
+# endif
+
+# ifndef PA
+#  define PA 0
+# endif
+
+# ifndef PB
+#  define PB 1
+# endif
+
+# ifndef RA
+#  define RA 0
+# endif
+
+# ifndef RB
+#  define RB 1
+# endif
+
+# ifndef RRA
+#  define RRA 0
+# endif
+
+# ifndef RRB
+#  define RRB 0
+# endif
 
 /* push_swap struct */
 
@@ -37,14 +69,16 @@ void	ft_getlist(char **argv);
 void	ft_error(int i);
 int		ft_checkspaces(char *argv);
 void	ft_lst_addback(t_cont **lst, int content);
-void	ft_swap_a(t_cont *stack, int ss);
-void	ft_swap_b(t_cont *stack, int ss);
+void	ft_swap(t_cont *stack, int swap);
 void	ft_sswap(t_cont *stack_a, t_cont *stack_b);
-void	ft_push_a(t_cont **stack_a, t_cont **stack_b);
-void	ft_push_b(t_cont **stack_a, t_cont **stack_b);
-void	ft_rotate_a(t_cont **stack_a, int rr);
-void	ft_rotate_b(t_cont **stack_b, int rr);
+void	ft_push(t_cont **host, t_cont **newcomer, int push);
+void	ft_rotate(t_cont **stack, int rotate);
 void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
+void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
+void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
+
+/* push_swap utilities */
+void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

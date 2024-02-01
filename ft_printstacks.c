@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_printstacks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 18:37:32 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/01 16:35:06 by rradules         ###   ########.fr       */
+/*   Created: 2024/02/01 17:55:21 by rradules          #+#    #+#             */
+/*   Updated: 2024/02/01 18:08:20 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(t_cont **host, t_cont **newcomer, int push)
+void	ft_printstacks(t_cont *stack_a, t_cont *stack_b)
 {
-	int		newnode;
-	t_cont	*head_newcomer;
-	t_cont	*head_host;
-
-	newnode = (*newcomer)->content;
-	head_newcomer = (*newcomer)->next;
-	free(*newcomer);
-	*newcomer = head_newcomer;
-	head_host = ft_newnode(newnode);
-	head_host->next = *host;
-	*host = head_host;
-	if (push == 0)
-		printf("pa\n");
-	else if (push == 1)
-		printf("pb\n");
+	printf("Stack_a         Stack_b\n");
+	while (stack_a || stack_b)
+	{
+		if (stack_a)
+			printf("   %d", stack_a->content);
+		else
+			printf("    ");
+		printf("\t\t");
+		if (stack_b)
+			printf("   %d", stack_b->content);
+		else
+			printf(" ");
+		printf("\n");
+		if (stack_a)
+			stack_a = stack_a->next;
+		if (stack_b)
+			stack_b = stack_b->next;
+	}
 }
