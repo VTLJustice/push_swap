@@ -79,6 +79,7 @@ void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 
 /* push_swap utilities */
 void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
+void	ft_normalize(t_cont **stack);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

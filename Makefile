@@ -32,6 +32,7 @@ MY_SOURCES = ft_hex.c \
 			 ft_rotate.c \
 			 ft_reverse_rotate.c \
 			 ft_printstacks.c \
+			 ft_normalize.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

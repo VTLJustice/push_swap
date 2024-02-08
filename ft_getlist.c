@@ -94,5 +94,6 @@ void	ft_getlist(char **argv)
 			ft_error(-1);
 	}
 	ft_check_duplicity(&stack_a);
+	ft_normalize(&stack_a);
 	ft_end(stack_a);
 }
