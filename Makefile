@@ -33,11 +33,13 @@ MY_SOURCES = ft_hex.c \
 			 ft_reverse_rotate.c \
 			 ft_printstacks.c \
 			 ft_normalize.c \
+			 ft_check_number.c \
+			 ft_memset.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra #-fsanitize=address#
+CFLAGS += -Wall -Werror -Wextra -fsanitize=address
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $^ -o $@

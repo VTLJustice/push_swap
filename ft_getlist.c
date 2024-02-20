@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/01 19:36:39 by rradules         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:57:00 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	ft_getlist(char **argv)
 			ft_error(-1);
 	}
 	ft_check_duplicity(&stack_a);
+	ft_printstacks(stack_a, stack_a);
 	ft_normalize(&stack_a);
+	ft_printstacks(stack_a, stack_a);
 	ft_end(stack_a);
 }
