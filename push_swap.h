@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/20 15:23:34 by rradules         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:23:32 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,12 @@ void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 /* push_swap utilities */
 void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
 void	ft_normalize(t_cont **stack);
-int		ft_check_number(char *pos);
 void	*ft_memset(void *str, size_t c, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+
+/* push_swap algorithim */
+void	ft_start_alg(t_cont **stack);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

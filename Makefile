@@ -33,8 +33,10 @@ MY_SOURCES = ft_hex.c \
 			 ft_reverse_rotate.c \
 			 ft_printstacks.c \
 			 ft_normalize.c \
-			 ft_check_number.c \
 			 ft_memset.c \
+			 ft_calloc.c \
+			 ft_bzero.c \
+			 ft_start_alg.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

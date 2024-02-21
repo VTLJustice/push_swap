@@ -6,87 +6,98 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:37:08 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/20 18:41:39 by rradules         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:19:51 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <strings.h>
 
-void	ft_if_min(t_cont **stack, int normalizer, char *pos, int i)
+int	ft_find_min(t_cont *stack, char *pos)
 {
-	(*stack)->content = normalizer;
-	pos[i] = '1';
-}
-
-int	ft_count_numbers(t_cont **stack)
-{
-	int		max_number;
-	t_cont	*get_max;
-
-	max_number = 1;
-	get_max = (*stack);
-	while (get_max)
-	{
-		get_max = get_max->next;
-		max_number++;
-	}
-	return (max_number);
-}
-
-void	stk(t_cont **stack, int min, int normalizer, char *pos)
-{
-	t_cont	*head;
-	int		i;
+	int	i;
+	int	min;
 
 	i = 0;
-	head = (*stack);
-	while (ft_check_number(pos) == 0)
+	min = stack->content;
+	while (stack)
 	{
-		if ((*stack)->content == min && pos[i] == '0')
+		if (pos[i] == '0')
 		{
-			ft_if_min(stack, normalizer, pos, i);
-			normalizer++;
-		}
-		else if ((*stack)->next == NULL)
-		{
-			(*stack) = head;
-			min++;
-			i = 0;
+			min = stack->content;
+			break ;
 		}
 		else
-		{
-			(*stack) = (*stack)->next;
+		{	
 			i++;
+			stack = stack->next;
 		}
 	}
-	(*stack) = head;
+	return (min);
+}
+
+t_cont	*ft_get_min(t_cont *head, char *pos)
+{
+	int		i;
+	int		pos_min;
+	int		min;
+	t_cont	*current_min;
+
+	i = 0;
+	pos_min = 0;
+	min = ft_find_min(head, pos);
+	while (head)
+	{
+		if (head->content <= min && pos[i] == '0')
+		{
+			current_min = head;
+			min = head->content;
+			pos_min = i;
+		}
+		i++;
+		head = head->next;
+	}
+	pos[pos_min] = '1';
+	return (current_min);
+}
+
+int	ft_count_numbers(t_cont *stack)
+{
+	int		list_size;
+
+	list_size = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		list_size++;
+	}
+	return (list_size);
 }
 
 void	ft_normalize(t_cont **stack)
 {
-	int		max_number;
-	int		min;
+	int		list_size;
 	char	*pos;
 	int		normalizer;
-	t_cont	*get_min;
+	t_cont	*head;
+	t_cont	*min;
 
-	normalizer = 1;
-	max_number = ft_count_numbers(stack);
-	pos = calloc(sizeof(int), (max_number - 1));
+	normalizer = 0;
+	head = (*stack);
+	min = NULL;
+	list_size = ft_count_numbers(*stack);
+	pos = ft_calloc(sizeof(int), (list_size + 1));
 	if (!pos)
 	{
 		free(pos);
 		exit(1);
 	}
-	ft_memset(pos, '0', max_number - 1);
-	min = (*stack)->content;
-	get_min = (*stack);
-	while (get_min)
+	while (normalizer < list_size)
 	{
-		if (get_min->content < min)
-			min = get_min->content;
-		get_min = get_min->next;
+		min = ft_get_min(head, pos);
+		(*stack) = min;
+		(*stack)->content = normalizer;
+		normalizer++;
 	}
-	stk(stack, min, normalizer, pos);
+	(*stack) = head;
 }

@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_start_alg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 15:41:11 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/21 16:50:40 by rradules         ###   ########.fr       */
+/*   Created: 2024/02/21 17:21:04 by rradules          #+#    #+#             */
+/*   Updated: 2024/02/21 17:44:36 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_start_alg(t_cont **stack)
 {
-	ft_memset(s, '0', n);
+	t_cont	*stack_b;
+
+	stack_b = NULL;
+	ft_printstacks(*stack, stack_b);
 }
