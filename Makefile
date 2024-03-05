@@ -37,6 +37,8 @@ MY_SOURCES = ft_hex.c \
 			 ft_calloc.c \
 			 ft_bzero.c \
 			 ft_start_alg.c \
+			 ft_end.c \
+			 ft_check_order.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

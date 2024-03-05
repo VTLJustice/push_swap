@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/21 17:23:32 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:31:32 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,21 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
 int		ft_checknumber(char	*argv);
 int		ft_isdigit(int a);
-void	ft_getlist(char **argv);
+void	ft_getlist(char **argv, t_cont *stack);
 void	ft_error(int i);
 int		ft_checkspaces(char *argv);
 void	ft_lst_addback(t_cont **lst, int content);
+void	ft_normalize(t_cont **stack);
+void	*ft_memset(void *str, size_t c, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+t_cont	*ft_lstlast(t_cont *lst);
+
+/* push_swap utilities */
+void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
+
+/* push_swap algorithim */
+void	ft_start_alg(t_cont **stack);
 void	ft_swap(t_cont *stack, int swap);
 void	ft_sswap(t_cont *stack_a, t_cont *stack_b);
 void	ft_push(t_cont **host, t_cont **newcomer, int push);
@@ -76,16 +87,8 @@ void	ft_rotate(t_cont **stack, int rotate);
 void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
 void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
-
-/* push_swap utilities */
-void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
-void	ft_normalize(t_cont **stack);
-void	*ft_memset(void *str, size_t c, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-void	ft_bzero(void *s, size_t n);
-
-/* push_swap algorithim */
-void	ft_start_alg(t_cont **stack);
+int		ft_check_order(t_cont *stack);
+void	ft_end(t_cont *stack);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

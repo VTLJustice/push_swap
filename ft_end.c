@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_end.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/05 12:47:37 by rradules         ###   ########.fr       */
+/*   Created: 2024/03/05 12:25:33 by rradules          #+#    #+#             */
+/*   Updated: 2024/03/05 12:36:45 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_end(t_cont *stack)
 {
-	t_cont	*stack;
+	t_cont	*temp;
 
-	stack = NULL;
-	if (argc > 1)
-		ft_getlist(argv, stack);
-	ft_end(stack);
-	return (0);
+	while (stack)
+	{
+		temp = stack->next;
+		free(stack);
+		stack = temp;
+	}
+	exit(0);
 }

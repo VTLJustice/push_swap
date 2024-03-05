@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 15:37:08 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/21 17:19:51 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:25:26 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_find_min(t_cont *stack, char *pos)
 			break ;
 		}
 		else
-		{	
+		{
 			i++;
 			stack = stack->next;
 		}

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_check_order.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 18:27:06 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/05 12:47:37 by rradules         ###   ########.fr       */
+/*   Created: 2024/03/05 12:52:51 by rradules          #+#    #+#             */
+/*   Updated: 2024/03/05 13:25:37 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_check_order(t_cont *stack)
 {
-	t_cont	*stack;
-
-	stack = NULL;
-	if (argc > 1)
-		ft_getlist(argv, stack);
-	ft_end(stack);
+	while (stack)
+	{
+		if (stack->next == NULL)
+			break ;
+		if (stack->content < stack->next->content)
+			stack = stack->next;
+		else
+			return (1);
+	}
 	return (0);
 }

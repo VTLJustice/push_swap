@@ -6,24 +6,11 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/21 17:24:08 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:40:04 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_end(t_cont *stack)
-{
-	t_cont	*temp;
-
-	while (stack)
-	{
-		temp = stack->next;
-		free(stack);
-		stack = temp;
-	}
-	exit(0);
-}
 
 void	ft_check_duplicity(t_cont **stack)
 {
@@ -71,30 +58,28 @@ void	ft_handlespaces(char *argv, t_cont **stack)
 		ft_error(-1);
 }
 
-void	ft_getlist(char **argv)
+void	ft_getlist(char **argv, t_cont *stack)
 {
 	int		i;
-	t_cont	*stack_a;
 
 	i = 1;
-	stack_a = NULL;
+	stack = NULL;
 	while (argv[i])
 	{
 		if ((ft_checknumber(argv[i])) == 0)
 		{
-			ft_handlespaces(argv[i], &stack_a);
+			ft_handlespaces(argv[i], &stack);
 			i++;
 		}
 		else if ((ft_checknumber(argv[i])) == 1)
 		{
-			ft_lst_addback(&stack_a, ft_atol(argv[i]));
+			ft_lst_addback(&stack, ft_atol(argv[i]));
 			i++;
 		}
 		else
 			ft_error(-1);
 	}
-	ft_check_duplicity(&stack_a);
-	ft_normalize(&stack_a);
-	ft_start_alg(&stack_a);
-	ft_end(stack_a);
+	ft_check_duplicity(&stack);
+	ft_normalize(&stack);
+	ft_start_alg(&stack);
 }
