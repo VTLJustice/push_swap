@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/05 15:31:32 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:26:36 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
 int		ft_checknumber(char	*argv);
 int		ft_isdigit(int a);
-void	ft_getlist(char **argv, t_cont *stack);
-void	ft_error(int i);
+void	ft_getlist(char **argv, t_cont **stack);
+void	ft_error(void);
 int		ft_checkspaces(char *argv);
 void	ft_lst_addback(t_cont **lst, int content);
 void	ft_normalize(t_cont **stack);
@@ -88,7 +88,8 @@ void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
 void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 int		ft_check_order(t_cont *stack);
-void	ft_end(t_cont *stack);
+void	ft_check_sort(t_cont **stack);
+void	ft_end(t_cont **stack);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);

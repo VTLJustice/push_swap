@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:31:58 by rradules          #+#    #+#             */
-/*   Updated: 2024/01/25 15:07:59 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:01:06 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	ft_atol(char *str)
 	}
 	result *= sign;
 	if (result < INT_MIN || result > INT_MAX)
-		ft_error(-1);
+		ft_error();
 	return (((int)result));
 }

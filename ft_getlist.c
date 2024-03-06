@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/05 12:40:04 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:00:53 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_check_duplicity(t_cont **stack)
 		while (current)
 		{
 			if (temp->content == current->content)
-				ft_error(-1);
+				ft_error();
 			current = current->next;
 		}
 		temp = temp->next;
@@ -55,31 +55,29 @@ void	ft_handlespaces(char *argv, t_cont **stack)
 		ft_numbers(splitted, stack);
 	}
 	else
-		ft_error(-1);
+		ft_error();
 }
 
-void	ft_getlist(char **argv, t_cont *stack)
+void	ft_getlist(char **argv, t_cont **stack)
 {
 	int		i;
 
 	i = 1;
-	stack = NULL;
 	while (argv[i])
 	{
 		if ((ft_checknumber(argv[i])) == 0)
 		{
-			ft_handlespaces(argv[i], &stack);
+			ft_handlespaces(argv[i], stack);
 			i++;
 		}
 		else if ((ft_checknumber(argv[i])) == 1)
 		{
-			ft_lst_addback(&stack, ft_atol(argv[i]));
+			ft_lst_addback(stack, ft_atol(argv[i]));
 			i++;
 		}
 		else
-			ft_error(-1);
+			ft_error();
 	}
-	ft_check_duplicity(&stack);
-	ft_normalize(&stack);
-	ft_start_alg(&stack);
+	ft_check_duplicity(stack);
+	ft_normalize(stack);
 }
