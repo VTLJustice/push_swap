@@ -12,40 +12,20 @@
 
 #include "push_swap.h"
 
-void	ft_sort_three(t_cont **stack)
-{
-	if ((*stack)->content == 0)
-	{
-		ft_swap(*stack, SA);
-		ft_rotate(stack, RA);
-	}
-	else if ((*stack)->content == 1)
-	{
-		if ((*stack)->next->content == 0)
-			ft_swap(*stack, SA);
-		else
-			ft_reverse_rotate(stack, RRA);
-	}
-	else if ((*stack)->content == 2)
-	{
-		if ((*stack)->next->content == 0)
-			ft_rotate(stack, RA);
-		else
-		{
-			ft_swap(*stack, SA);
-			ft_reverse_rotate(stack, RRA);
-		}
-	}
-}
-
 void	ft_start_alg(t_cont **stack)
 {
 	t_cont	*stack_b;
-	t_cont	*last;
 
 	stack_b = NULL;
-	last = ft_lstlast(*stack);
 	ft_printstacks(*stack, stack_b);
-	ft_check_sort(stack);
+	if (ft_count_numbers(*stack) < 4)
+		ft_sort_three(stack);
+	else
+	{
+		ft_push(&stack_b, stack, PB);
+		ft_push(&stack_b, stack, PB);
+		ft_first_step(stack, &stack_b);
+	}
 	ft_printstacks(*stack, stack_b);
+	ft_end(&stack_b);
 }

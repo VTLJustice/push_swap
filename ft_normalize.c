@@ -82,22 +82,23 @@ void	ft_normalize(t_cont **stack)
 	t_cont	*head;
 	t_cont	*min;
 
-	normalizer = 0;
+	normalizer = 1;
 	head = (*stack);
 	min = NULL;
 	list_size = ft_count_numbers(*stack);
-	pos = ft_calloc(sizeof(int), (list_size + 1));
+	pos = ft_calloc(sizeof(char), list_size);
 	if (!pos)
 	{
 		free(pos);
-		exit(1);
+		exit(-1);
 	}
-	while (normalizer < list_size)
+	while (normalizer < list_size + 1)
 	{
 		min = ft_get_min(head, pos);
 		(*stack) = min;
 		(*stack)->content = normalizer;
 		normalizer++;
 	}
+	free(pos);
 	(*stack) = head;
 }

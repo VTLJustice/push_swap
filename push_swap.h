@@ -77,6 +77,7 @@ t_cont	*ft_lstlast(t_cont *lst);
 
 /* push_swap utilities */
 void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
+int	ft_count_numbers(t_cont *stack);
 
 /* push_swap algorithim */
 void	ft_start_alg(t_cont **stack);
@@ -88,7 +89,8 @@ void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
 void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 int		ft_check_order(t_cont *stack);
-void	ft_check_sort(t_cont **stack);
+int		ft_check_order_b(t_cont *stack);
+void	ft_sort_three(t_cont **stack);
 void	ft_end(t_cont **stack);
 
 /* ft_printf functions */

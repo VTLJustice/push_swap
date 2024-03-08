@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+void	ft_free_splitted(char **splitted)
+{
+	int	i;
+
+	i = 0;
+	if (splitted)
+	{
+		while (splitted[i])
+		{
+			free(splitted[i]);
+			i++;
+		}
+		free(splitted);
+	}
+}
+
 void	ft_check_duplicity(t_cont **stack)
 {
 	t_cont	*current;
@@ -56,6 +72,7 @@ void	ft_handlespaces(char *argv, t_cont **stack)
 	}
 	else
 		ft_error();
+	ft_free_splitted(splitted);
 }
 
 void	ft_getlist(char **argv, t_cont **stack)
