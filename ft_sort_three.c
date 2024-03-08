@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_sort.c                                    :+:      :+:    :+:   */
+/*   ft_sort_three.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -66,7 +66,7 @@ int	ft_sorting_order(t_cont *stack)
 	return (0);
 }
 
-void	ft_check_sort(t_cont **stack)
+void	ft_sort_three(t_cont **stack)
 {
 	if (ft_sorting_order(*stack) == 1)
 	{
