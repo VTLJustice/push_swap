@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:43:52 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/06 16:00:53 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:16:53 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	ft_handlespaces(char *argv, t_cont **stack)
 	char	**splitted;
 	int		found;
 
+	splitted = NULL;
 	found = ft_checkspaces(argv);
 	if (found == 1)
 	{

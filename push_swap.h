@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/06 18:26:36 by rradules         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:06:04 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_cont	*ft_lstlast(t_cont *lst);
 
 /* push_swap utilities */
 void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
-int	ft_count_numbers(t_cont *stack);
+int		ft_count_numbers(t_cont *stack);
 
 /* push_swap algorithim */
 void	ft_start_alg(t_cont **stack);
