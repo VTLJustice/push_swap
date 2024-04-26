@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/14 19:06:04 by rradules         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:32:37 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 typedef struct s_container
 {
 	int					content;
+	int					min;
+	int					max;
 	struct s_container	*next;
 }						t_cont;
 
