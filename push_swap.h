@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/04/18 17:32:37 by rradules         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:10:15 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ int		ft_check_order(t_cont *stack);
 int		ft_check_order_b(t_cont *stack);
 void	ft_sort_three(t_cont **stack);
 void	ft_end(t_cont **stack);
+int		ft_min(t_cont *stack);
+void	ft_sort_four(t_cont **stack_a, t_cont **stack_b);
+void	ft_sort_five(t_cont **stack_a, t_cont **stack_b);
 
 /* ft_printf functions */
 int		ft_printf(char const *format, ...);
