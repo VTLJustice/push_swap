@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 18:37:32 by rradules          #+#    #+#             */
-/*   Updated: 2024/03/05 12:52:43 by rradules         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:12:35 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_push(t_cont **host, t_cont **newcomer, int push)
 	head_host->next = *host;
 	*host = head_host;
 	if (push == 0)
-		printf("pa\n");
+		ft_printf("pa\n");
 	else if (push == 1)
-		printf("pb\n");
+		ft_printf("pb\n");
 }

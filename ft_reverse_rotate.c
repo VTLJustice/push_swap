@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:07:27 by rradules          #+#    #+#             */
-/*   Updated: 2024/02/01 19:35:32 by rradules         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:13:19 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	ft_reverse_rotate(t_cont **stack, int reverse_rotate)
 	head->next = (*stack);
 	(*stack) = head;
 	if (reverse_rotate == 0)
-		printf("rra\n");
+		ft_printf("rra\n");
 	else if (reverse_rotate == 1)
-		printf("rrb\n");
+		ft_printf("rrb\n");
 }
 
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b)
 {
 	ft_reverse_rotate(stack_a, 2);
 	ft_reverse_rotate(stack_b, 2);
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
