@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/05/02 13:10:15 by rradules         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:25:54 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # endif
 
 # ifndef RRB
-#  define RRB 0
+#  define RRB 1
 # endif
 
 /* push_swap struct */

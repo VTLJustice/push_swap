@@ -46,7 +46,7 @@ MY_SOURCES = ft_hex.c \
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -fsanitize=address
+CFLAGS += -Wall -Werror -Wextra #-fsanitize=address
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $^ -o $@
