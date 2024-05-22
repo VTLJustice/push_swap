@@ -12,9 +12,32 @@
 
 #include "push_swap.h"
 
+int	ft_find_pos(t_cont *stack_b, int content)
+{
+	int	diff;
+	int	cmp;
+	int	pos;
+
+	pos = 1;
+	cmp = content - stack_b->content;
+	diff = cmp;
+	stack_b = stack_b->next;
+	while (stack_b)
+	{
+		cmp = content - stack_b->content;
+		if ((cmp > 0) && (cmp < diff))
+		{
+			diff = cmp;
+			pos++;
+		}
+		stack_b = stack_b->next;
+	}
+	return(pos);
+}
+
 int	ft_max_or_min(t_cont *stack_b, int max)
 {
-	int	steps;
+	int		steps;
 	t_cont	*temp;
 
 	steps = 0;
@@ -45,10 +68,11 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 	int	best_move;
 	int	cmp;
 	int	chosen;
-	
+
 	pos = 1;
 	cmp = stack_a->content;
 	best_move = pos + ft_max_or_min(stack_b, max);
+	chosen = pos;
 	printf("This is the best move: %d\n", best_move);
 	stack_a = stack_a->next;
 	while (stack_a)
@@ -60,7 +84,7 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 		else if (cmp < min)
 			movements = pos + ft_max_or_min(stack_b, max);
 		else
-			/*movements = pos + ft_find_pos(stack_a, stack_b);*/
+			movements = pos + ft_find_pos(stack_b, cmp);
 		if (best_move > movements)
 		{
 			best_move = movements;
@@ -72,17 +96,17 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 	ft_printf("pos %d\n", pos);
 	return (chosen);
 }
-/*
-int	ft_calc_steps(t_cont *stack_a, t_cont *stack_b)
+
+void	ft_do_steps(t_cont *stack_a, t_cont *stack_b, int chosen)
 {
 
 }
-*/
+
 void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 {
 	int	min;
 	int	max;
-	int	chosen;
+	int	pos;
 
 	max = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
@@ -91,7 +115,11 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 	else
 		min = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
-	chosen = ft_find_steps(*stack_a, *stack_b, max, min);
+	while (ft_count_numbers(*stack) < 4)
+	{
+		pos = ft_find_steps(*stack_a, *stack_b, max, min);
+		ft_do_steps(stack_a, stack_b, pos);
+	}
 }
 
 void	ft_start_alg(t_cont **stack)
@@ -107,9 +135,7 @@ void	ft_start_alg(t_cont **stack)
 	else if (ft_count_numbers(*stack) < 6)
 		ft_sort_five(stack, &stack_b);
 	else
-	{
 		ft_first_steps(stack, &stack_b);
-	}
 	ft_printstacks(*stack, stack_b);
 	ft_end(&stack_b);
 }
