@@ -6,11 +6,13 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:21:04 by rradules          #+#    #+#             */
-/*   Updated: 2024/05/16 14:51:20 by rradules         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:23:43 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_max(t_cont *stack);
 
 int	ft_find_pos(t_cont *stack_b, int content)
 {
@@ -42,7 +44,7 @@ int	ft_max_or_min(t_cont *stack_b, int max)
 
 	steps = 0;
 	temp = stack_b;
-	while (temp)
+	while (temp->next != NULL)
 		temp = temp->next;
 	if (stack_b->content == max)
 		return (steps);
@@ -72,13 +74,12 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 	pos = 1;
 	cmp = stack_a->content;
 	best_move = pos + ft_max_or_min(stack_b, max);
+	ft_printf("Best move = %d\n", best_move);
 	chosen = pos;
-	printf("This is the best move: %d\n", best_move);
 	stack_a = stack_a->next;
 	while (stack_a)
 	{
 		cmp = stack_a->content;
-		printf("Content = %d\n", stack_a->content);
 		if (cmp > max)
 			movements = pos + ft_max_or_min(stack_b, max);
 		else if (cmp < min)
@@ -93,13 +94,94 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 		pos++;
 		stack_a = stack_a->next;
 	}
-	ft_printf("pos %d\n", pos);
+	ft_printf("Chosen pos = %d\n", chosen);
 	return (chosen);
 }
 
-void	ft_do_steps(t_cont *stack_a, t_cont *stack_b, int chosen)
+void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int chosen)
 {
+	int	pos_b;
+	int	last_a;
+	int	last_b;
+	t_cont	*temp_a;
+	t_cont	*temp_b;
 
+	temp_a = (*stack_a);
+	temp_b = (*stack_b);
+	while (temp_a->next != NULL)
+		temp_a = temp_a->next;
+	last_a = temp_a->content;
+	while (temp_b->next != NULL)
+		temp_b = temp_b->next;
+	last_b = temp_b->content;
+	pos_b = ft_find_pos(*stack_b, chosen);
+	if (chosen == pos_b)
+		ft_push(stack_b, stack_a, PB);
+	else if (chosen == 1 && pos_b == 2)
+	{
+		ft_swap(*stack_b, SB);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == 1 && pos_b == last_b)
+	{
+		ft_reverse_rotate(stack_b, RRB);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == 2 && pos_b == 1)
+	{
+		ft_swap(*stack_a, SA);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == 2 && pos_b == 2)
+	{
+		ft_sswap(*stack_a, *stack_b);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == 2 && pos_b == last_b)
+	{
+		ft_swap(*stack_a, SA);
+		ft_reverse_rotate(stack_b, RRB);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == last_a && pos_b == 1)
+	{
+		ft_reverse_rotate(stack_a, RRA);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == last_a && pos_b == 2)
+	{
+		ft_reverse_rotate(stack_a, RRA);
+		ft_swap(*stack_b, SB);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else if (chosen == last_a && pos_b == last_b)
+	{
+		ft_rr_rotate(stack_a, stack_b);
+		ft_push(stack_b, stack_a, PB);
+	}
+	else
+	{
+		 while(pos_b > 1 && chosen > 1)
+		 {
+			 if (chosen > pos_b)
+			 {
+				 ft_rotate(stack_a, RA);
+				 chosen--;
+			 }
+			 else if (chosen < pos_b)
+			 {
+				 ft_rotate(stack_b, RRB);
+				 pos_b--;
+			 }
+			 else
+			 {
+				 ft_rrotate(stack_a, stack_b);
+				 chosen--;
+				 pos_b--;
+			 }
+		 }
+		 ft_push(stack_b, stack_a, PB);
+	}
 }
 
 void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
@@ -115,10 +197,12 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 	else
 		min = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
-	while (ft_count_numbers(*stack) < 4)
+	while (ft_count_numbers(*stack_a) > 3)
 	{
 		pos = ft_find_steps(*stack_a, *stack_b, max, min);
 		ft_do_steps(stack_a, stack_b, pos);
+		min = ft_min(*stack_b);
+		max = ft_max(*stack_b);
 	}
 }
 
