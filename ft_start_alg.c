@@ -14,6 +14,21 @@
 
 int	ft_max(t_cont *stack);
 
+int	ft_chosen(t_cont *stack_a, int pos)
+{
+	int	i;
+	int	chosen;
+
+	i = 1;
+	while (i <= pos)
+	{
+		chosen = stack_a->content;
+		stack_a = stack_a->next;
+		i++;
+	}
+	return (chosen);
+}
+
 int	ft_find_pos(t_cont *stack_b, int content)
 {
 	int	diff;
@@ -67,13 +82,18 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 {
 	int	movements;
 	int	pos;
-	int	best_move;
 	int	cmp;
+	int	best_move;
 	int	chosen;
 
 	pos = 1;
 	cmp = stack_a->content;
-	best_move = pos + ft_max_or_min(stack_b, max);
+	if (cmp > max)
+		best_move = pos + ft_max_or_min(stack_b, max);
+	else if (cmp < min)
+		best_move = pos + ft_max_or_min(stack_b, max);
+	else
+		best_move = pos + ft_find_pos(stack_b, cmp);
 	ft_printf("Best move = %d\n", best_move);
 	chosen = pos;
 	stack_a = stack_a->next;
@@ -108,14 +128,21 @@ void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int chosen)
 
 	temp_a = (*stack_a);
 	temp_b = (*stack_b);
+	last_a = 1;
+	last_b = 1;
 	while (temp_a->next != NULL)
+	{
 		temp_a = temp_a->next;
-	last_a = temp_a->content;
+		last_a++;
+	}
 	while (temp_b->next != NULL)
+	{
 		temp_b = temp_b->next;
-	last_b = temp_b->content;
-	pos_b = ft_find_pos(*stack_b, chosen);
-	if (chosen == pos_b)
+		last_b++;
+	}
+	pos_b = ft_find_pos(*stack_b, ft_chosen((*stack_a), chosen));
+	ft_printf("pos_b = %d\n", pos_b);
+	if (chosen == 1 && pos_b == 1)
 		ft_push(stack_b, stack_a, PB);
 	else if (chosen == 1 && pos_b == 2)
 	{
@@ -188,7 +215,7 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 {
 	int	min;
 	int	max;
-	int	pos;
+	int	chosen;
 
 	max = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
@@ -199,8 +226,8 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 	ft_push(stack_b, stack_a, PB);
 	while (ft_count_numbers(*stack_a) > 3)
 	{
-		pos = ft_find_steps(*stack_a, *stack_b, max, min);
-		ft_do_steps(stack_a, stack_b, pos);
+		chosen = ft_find_steps(*stack_a, *stack_b, max, min);
+		ft_do_steps(stack_a, stack_b, chosen);
 		min = ft_min(*stack_b);
 		max = ft_max(*stack_b);
 	}
