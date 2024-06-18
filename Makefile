@@ -42,6 +42,7 @@ MY_SOURCES = ft_hex.c \
 			 ft_sort_three.c \
 			 ft_sort_four.c \
 			 ft_sort_five.c \
+			 ft_back_to_a.c \
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

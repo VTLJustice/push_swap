@@ -76,6 +76,7 @@ void	*ft_memset(void *str, size_t c, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 t_cont	*ft_lstlast(t_cont *lst);
+void	ft_back_to_a(t_cont **stack_a, t_cont **stack_b);
 
 /* push_swap utilities */
 void	ft_printstacks(t_cont *stack_a, t_cont *stack_b);
@@ -95,6 +96,7 @@ int		ft_check_order_b(t_cont *stack);
 void	ft_sort_three(t_cont **stack);
 void	ft_end(t_cont **stack);
 int		ft_min(t_cont *stack);
+int		ft_max(t_cont *stack);
 void	ft_sort_four(t_cont **stack_a, t_cont **stack_b);
 void	ft_sort_five(t_cont **stack_a, t_cont **stack_b);
 

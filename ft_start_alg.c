@@ -12,7 +12,38 @@
 
 #include "push_swap.h"
 
-int	ft_max(t_cont *stack);
+int	ft_find_pos_b(t_cont *stack_b, int num, int max, int min)
+{
+	int	i;
+	int	pos;
+	int	cmp;
+
+	cmp = 0;
+	i = 1;
+	pos = i;
+	if (num > max || num < min)
+	{
+		while (stack_b)
+		{
+			if (stack_b->content == max)
+				break ;
+			pos++;
+			stack_b = stack_b->next;
+		}
+	}
+	else
+	{
+		while (stack_b)
+		{
+			cmp = num - stack_b->content;
+			if ((cmp > 0) && (cmp == 1))
+				pos = i;
+			i++;
+			stack_b = stack_b->next;
+		}
+	}
+	return (pos);
+}
 
 int	ft_chosen(t_cont *stack_a, int pos)
 {
@@ -31,22 +62,21 @@ int	ft_chosen(t_cont *stack_a, int pos)
 
 int	ft_find_pos(t_cont *stack_b, int content)
 {
-	int	diff;
 	int	cmp;
 	int	pos;
+	int	i;
 
-	pos = 1;
+	i = 1;
+	pos = i;
 	cmp = content - stack_b->content;
-	diff = cmp;
 	stack_b = stack_b->next;
+	i++;
 	while (stack_b)
 	{
 		cmp = content - stack_b->content;
-		if ((cmp > 0) && (cmp < diff))
-		{
-			diff = cmp;
-			pos++;
-		}
+		if ((cmp > 0) && (cmp == 1))
+			pos = i;
+		i++;
 		stack_b = stack_b->next;
 	}
 	return(pos);
@@ -94,7 +124,6 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 		best_move = pos + ft_max_or_min(stack_b, max);
 	else
 		best_move = pos + ft_find_pos(stack_b, cmp);
-	ft_printf("Best move = %d\n", best_move);
 	chosen = pos;
 	stack_a = stack_a->next;
 	while (stack_a)
@@ -114,7 +143,6 @@ int	ft_find_steps(t_cont *stack_a, t_cont *stack_b, int max, int min)
 		pos++;
 		stack_a = stack_a->next;
 	}
-	ft_printf("Chosen pos = %d\n", chosen);
 	return (chosen);
 }
 
@@ -140,8 +168,7 @@ void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int chosen)
 		temp_b = temp_b->next;
 		last_b++;
 	}
-	pos_b = ft_find_pos(*stack_b, ft_chosen((*stack_a), chosen));
-	ft_printf("pos_b = %d\n", pos_b);
+	pos_b = ft_find_pos_b(*stack_b, ft_chosen((*stack_a), chosen), ft_max(*stack_b), ft_min(*stack_b));
 	if (chosen == 1 && pos_b == 1)
 		ft_push(stack_b, stack_a, PB);
 	else if (chosen == 1 && pos_b == 2)
@@ -209,6 +236,7 @@ void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int chosen)
 		 }
 		 ft_push(stack_b, stack_a, PB);
 	}
+	ft_printstacks(*stack_a, *stack_b);
 }
 
 void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
@@ -219,11 +247,23 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 
 	max = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
+	if (ft_check_order(*stack_a) == 0)
+	{
+		ft_back_to_a(stack_a, stack_b);
+		ft_end(stack_b);
+		exit(1);
+	}
 	if (max < (*stack_a)->content)
 		max = (*stack_a)->content;
 	else
 		min = (*stack_a)->content;
 	ft_push(stack_b, stack_a, PB);
+	if (ft_check_order(*stack_a) == 0)
+	{
+		ft_back_to_a(stack_a, stack_b);
+		ft_end(stack_b);
+		exit(1);
+	}
 	while (ft_count_numbers(*stack_a) > 3)
 	{
 		chosen = ft_find_steps(*stack_a, *stack_b, max, min);
@@ -247,6 +287,6 @@ void	ft_start_alg(t_cont **stack)
 		ft_sort_five(stack, &stack_b);
 	else
 		ft_first_steps(stack, &stack_b);
-	ft_printstacks(*stack, stack_b);
+	ft_back_to_a(stack, &stack_b);
 	ft_end(&stack_b);
 }
