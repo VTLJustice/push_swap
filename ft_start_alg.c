@@ -77,12 +77,24 @@ void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int *best)
 	{
 		best[0] = (ft_count_numbers(*stack_a) - best[0]) + 2;
 		best[1] = (ft_count_numbers(*stack_b) - best[1]) + 1;
-		while (best[0]-- > 0 || best[1]-- > 0)
+		while (best[0] > 1 || best[1] > 1)
 		{
-			if (best[0] > 0)
+			if (best[0] == best[1])
+			{
+				ft_rr_rotate(stack_a, stack_b);
+				best[0]--;
+				best[1]--;
+			}
+			else if (best[0] > 1 && best[0] > best[1])
+			{
 				ft_reverse_rotate(stack_a, RA);
-			if (best[1] > 0)
+				best[0]--;
+			}
+			if (best[1] > 1 && best[1] > best[0])
+			{
 				ft_reverse_rotate(stack_b, RB);
+				best[1]--;
+			}
 		}
 	}
 	else if (best[0] > half_a && best[1] <= half_b)
@@ -109,12 +121,24 @@ void	ft_do_steps(t_cont **stack_a, t_cont **stack_b, int *best)
 	}
 	else
 	{
-		while (best[0]-- > 1 || best[1]-- > 0)
+		while (best[0] > 2 || best[1] > 1)
 		{
-			if (best[0] > 1)
+			if (best[0] == best[1])
+			{
+				ft_rrotate(stack_a, stack_b);
+				best[0]--;
+				best[1]--;
+			}
+			else if (best[0] > 2 && best[0] > best[1])
+			{
 				ft_rotate(stack_a, RA);
-			if (best[1] > 0)
+				best[0]--;
+			}
+			else if (best[1] > 1 && best[1] > best[0])
+			{
 				ft_rotate(stack_b, RB);
+				best[1]--;
+			}
 		}
 	}
 	ft_push(stack_b, stack_a, PB);
@@ -207,12 +231,16 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 		exit(-1);
 	ft_push(stack_b, stack_a, PB);
 	ft_push(stack_b, stack_a, PB);
+	//ft_printstacks(*stack_a, *stack_b);
 	while (ft_count_numbers(*stack_a) > 3)
 	{
+		if (ft_check_order_a(*stack_a) == 0)
+			break ;
 		edges[0] = ft_max(*stack_b);
 		edges[1] = ft_min(*stack_b);
 		chosen = ft_find_pos(*stack_a, *stack_b, chosen, edges);
 		ft_do_steps(stack_a, stack_b, chosen);
+	//	ft_printstacks(*stack_a, *stack_b);
 	}
 	free(chosen);
 	free(edges);

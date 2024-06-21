@@ -93,6 +93,7 @@ void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 int		ft_check_order(t_cont *stack);
 int		ft_check_order_b(t_cont *stack);
+int		ft_check_order_a(t_cont *stack);
 void	ft_sort_three(t_cont **stack);
 void	ft_end(t_cont **stack);
 int		ft_min(t_cont *stack);
