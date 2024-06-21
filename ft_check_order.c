@@ -18,7 +18,7 @@ int	ft_check_order_b(t_cont *stack)
 	{
 		if (stack->next == NULL)
 			break ;
-		if (stack->content > stack->next->content)
+		if (stack->content < stack->next->content)
 			stack = stack->next;
 		else
 			return (1);
