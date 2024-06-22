@@ -251,7 +251,7 @@ void	ft_start_alg(t_cont **stack)
 	t_cont	*stack_b;
 
 	stack_b = NULL;
-	//ft_printstacks(*stack, stack_b);
+	ft_printstacks(*stack, stack_b);
 	if (ft_count_numbers(*stack) < 4)
 		ft_sort_three(stack);
 	else if (ft_count_numbers(*stack) < 5)
@@ -263,6 +263,6 @@ void	ft_start_alg(t_cont **stack)
 		ft_first_steps(stack, &stack_b);
 		ft_back_to_a(stack, &stack_b);
 	}
-	//ft_printstacks(*stack, stack_b);
+	ft_printstacks(*stack, stack_b);
 	ft_end(&stack_b);
 }

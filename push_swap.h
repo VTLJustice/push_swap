@@ -55,9 +55,8 @@
 typedef struct s_container
 {
 	int					content;
-	int					min;
-	int					max;
 	struct s_container	*next;
+	struct s_container	*prev;
 }						t_cont;
 
 /* push_swap functions */

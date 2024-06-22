@@ -40,48 +40,15 @@ int	ft_min(t_cont *stack)
 	return (min);
 }
 
-int	ft_sorting_order(t_cont *stack)
-{
-	int	min;
-	int	max;
-
-	min = ft_min(stack);
-	max = ft_max(stack);
-	if (stack->content == min)
-		return (1);
-	else if (stack->content != min && stack->content != max)
-	{
-		if (stack->next->content == min)
-			return (2);
-		else
-			return (3);
-	}
-	else if (stack->content == max)
-	{
-		if (stack->next->content == min)
-			return (4);
-		else
-			return (5);
-	}
-	return (0);
-}
-
 void	ft_sort_three(t_cont **stack)
 {
-	if (ft_sorting_order(*stack) == 1)
-	{
-		ft_swap(*stack, SA);
+	int	max;
+
+	max = ft_max(*stack);
+	if ((*stack)->content == max)
 		ft_rotate(stack, RA);
-	}
-	else if (ft_sorting_order(*stack) == 2)
-		ft_swap(*stack, SA);
-	else if (ft_sorting_order(*stack) == 3)
+	else if ((*stack)->next->content == max)
 		ft_reverse_rotate(stack, RRA);
-	else if (ft_sorting_order(*stack) == 4)
-		ft_rotate(stack, RA);
-	else if (ft_sorting_order(*stack) == 5)
-	{
-		ft_swap(*stack, SA);
-		ft_reverse_rotate(stack, RRA);
-	}
+	if ((*stack)->content > (*stack)->next->content)
+		ft_swap(*stack, RA);
 }

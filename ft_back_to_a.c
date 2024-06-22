@@ -87,7 +87,7 @@ void	ft_sort_min(t_cont **stack_a)
 	min = ft_min(*stack_a);
 	i = ft_pos(*stack_a, min);
 	half = ft_half(*stack_a);
-	if (i >= half)
+	if (i > half)
 	{
 		i = 1 + ft_count_numbers(*stack_a) - i;
 		while (i > 0)

@@ -23,12 +23,15 @@ t_cont	*ft_lstlast(t_cont *lst)
 void	ft_lst_addback(t_cont **lst, int content)
 {
 	t_cont	*last;
+	t_cont	*node;
 
 	if (*lst == NULL)
 		*lst = ft_newnode(content);
 	else
 	{
 		last = ft_lstlast(*lst);
-		last->next = ft_newnode(content);
+		node = ft_newnode(content);
+		last->next = node;
+		node->prev = last;
 	}
 }
