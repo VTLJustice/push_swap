@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 19:04:53 by rradules          #+#    #+#             */
-/*   Updated: 2024/05/28 16:57:45 by rradules         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:08:49 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,6 @@ void	ft_rrotate(t_cont **stack_a, t_cont **stack_b);
 void	ft_reverse_rotate(t_cont **stack, int reverse_rotate);
 void	ft_rr_rotate(t_cont **stack_a, t_cont **stack_b);
 int		ft_check_order(t_cont *stack);
-int		ft_check_order_b(t_cont *stack);
-int		ft_check_order_a(t_cont *stack);
 void	ft_sort_three(t_cont **stack);
 void	ft_end(t_cont **stack);
 int		ft_min(t_cont *stack);
@@ -108,7 +106,6 @@ int		ft_putchar(char c);
 int		ft_putstr(char *s);
 int		ft_nbr(long int n);
 char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *str);
 size_t	ft_hnbrlen(unsigned long int n, char format);
 size_t	ft_nbrlen(long int n);
 int		ft_writenum(unsigned long int n, char *base, char format);

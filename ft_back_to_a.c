@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:34:54 by rradules          #+#    #+#             */
-/*   Updated: 2024/06/25 14:34:59 by rradules         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:21:02 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	ft_back_to_a(t_cont **stack_a, t_cont **stack_b)
 	int	*edges;
 	int	chosen;
 
-	if (ft_check_order_b(*stack_a) == 1)
+	if (ft_check_order(*stack_a) == 1)
 		ft_sort_three(stack_a);
 	edges = malloc(sizeof(int) * 2);
 	if (!edges)

@@ -6,7 +6,7 @@
 /*   By: rradules <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:21:04 by rradules          #+#    #+#             */
-/*   Updated: 2024/05/28 18:23:43 by rradules         ###   ########.fr       */
+/*   Updated: 2024/06/27 13:20:38 by rradules         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ void	ft_first_steps(t_cont **stack_a, t_cont **stack_b)
 	//ft_printstacks(*stack_a, *stack_b);
 	while (ft_count_numbers(*stack_a) > 3)
 	{
-		if (ft_check_order_a(*stack_a) == 0)
+		if (ft_check_order(*stack_a) == 0)
 			break ;
 		edges[0] = ft_max(*stack_b);
 		edges[1] = ft_min(*stack_b);
